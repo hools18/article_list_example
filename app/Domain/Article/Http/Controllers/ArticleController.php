@@ -10,7 +10,14 @@ class ArticleController
 {
     public function index()
     {
-        return ArticleResource::collection(Article::all());
+        return view('article.index', [
+            'articles' => ArticleResource::collection(Article::all())
+        ]);
+    }
+
+    public function create()
+    {
+        return view('article.create');
     }
 
     public function store(ArticleRequest $request)
