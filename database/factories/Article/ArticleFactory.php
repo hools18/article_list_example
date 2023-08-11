@@ -2,9 +2,9 @@
 
 namespace Database\Factories\Article;
 
-use App\Models\Article\Enums\TypeEnum;
-use App\Models\Category\Category;
-use App\Models\User\User;
+use App\Domain\Article\Enums\TypeEnum;
+use App\Domain\Category\Model\Category;
+use App\Domain\User\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ArticleFactory extends Factory

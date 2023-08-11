@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category\Model\Category;
-use App\Models\Category\Requests\CategoryRequest;
-use App\Models\Category\Resources\CategoryResource;
+use App\Domain\Category\Model\Category;
+use App\Domain\Category\Requests\CategoryRequest;
+use App\Domain\Category\Resources\CategoryResource;
 
 class CategoryController extends Controller
 {

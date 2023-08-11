@@ -36,9 +36,14 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
 
-
-            Route::middleware('web')
-                ->group(base_path('routes/front.php'));
+            foreach (array_diff(scandir(base_path('app/Domain')), ['..', '.']) as $folderName) {
+                if (file_exists(base_path("app/Domain/{$folderName}/Routes/route.php"))) {
+                    Route::prefix('panel')
+                        ->middleware(['web'])
+                        ->namespace("App\Domain\\{$folderName}\Http\Controllers")
+                        ->group(base_path("app/Domain/{$folderName}/Routes/route.php"));
+                }
+            }
         });
     }
 }

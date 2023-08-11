@@ -15,6 +15,9 @@ use Inertia\Inertia;
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Http\Controllers\MainController;
+
+Route::get('/', [MainController::class, 'index'])->name('main.index');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

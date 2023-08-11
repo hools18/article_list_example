@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Category\Model;
+namespace App\Domain\Category\Model;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -10,5 +10,9 @@ class Category extends Model
 {
     use SoftDeletes, HasFactory;
 
-    protected $fillable = ['name', 'is_active'];
+    protected $fillable = [
+        'name',
+        'description',
+        'is_active',
+    ];
 }

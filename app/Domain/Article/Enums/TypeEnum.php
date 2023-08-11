@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Article\Enums;
+namespace App\Domain\Article\Enums;
 
 enum TypeEnum: string
 {
