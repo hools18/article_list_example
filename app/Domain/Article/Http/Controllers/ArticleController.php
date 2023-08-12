@@ -2,7 +2,7 @@
 
 namespace App\Domain\Article\Http\Controllers;
 
-use App\Domain\Article\Model\Article;
+use App\Domain\Article\Models\Article;
 use App\Domain\Article\Requests\ArticleRequest;
 use App\Domain\Article\Resources\ArticleResource;
 

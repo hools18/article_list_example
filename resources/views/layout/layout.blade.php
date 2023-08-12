@@ -14,13 +14,13 @@
 </head>
 <body class="antialiased">
 
-@include('layount.blocks.navbar')
-@include('layount.blocks.header')
+@include('layout.blocks.navbar')
+@include('layout.blocks.header')
 <main id="app">
     <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
         @yield('content')
     </div>
 </main>
-@include('layount.blocks.footer')
+@include('layout.blocks.footer')
 </body>
-</html>ыфшд
+</html>

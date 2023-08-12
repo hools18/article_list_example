@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Domain\Category\Model\Category;
+use App\Domain\Category\Models\Category;
 use App\Domain\Category\Requests\CategoryRequest;
 use App\Domain\Category\Resources\CategoryResource;
 

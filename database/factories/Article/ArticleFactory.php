@@ -3,12 +3,15 @@
 namespace Database\Factories\Article;
 
 use App\Domain\Article\Enums\TypeEnum;
-use App\Domain\Category\Model\Category;
-use App\Domain\User\User;
+use App\Domain\Article\Models\Article;
+use App\Domain\Category\Models\Category;
+use App\Domain\User\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ArticleFactory extends Factory
 {
+    protected $model = Article::class;
+    
     public function definition(): array
     {
         $category = Category::factory()->create();
