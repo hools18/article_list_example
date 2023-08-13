@@ -16,4 +16,12 @@ enum RoleEnum: string
             self::ADMIN => 'Админ',
         };
     }
+
+    public static function publicRoles(): array
+    {
+        return [
+            self::AUTHOR,
+            self::READER,
+        ];
+    }
 }
