@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Article\Traits;
+namespace App\Domain\Article\Models\Traits;
 
 use App\Domain\Category\Models\Category;
 use App\Domain\User\Models\User;

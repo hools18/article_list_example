@@ -2,7 +2,7 @@
 
 namespace App\Domain\Article\Models;
 
-use App\Domain\Article\Traits\ArticleBaseTrait;
+use App\Domain\Article\Models\Traits\ArticleBaseTrait;
 use Database\Factories\Article\ArticleFactory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

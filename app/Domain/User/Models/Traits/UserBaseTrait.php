@@ -2,7 +2,7 @@
 
 namespace App\Domain\User\Models\Traits;
 
-trait BaseTrait
+trait UserBaseTrait
 {
     use RoleTrait;
 }
