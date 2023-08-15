@@ -4,7 +4,7 @@
 
 @section('content')
     @role(\App\Domain\User\Enums\RoleEnum::AUTHOR->value)
-    <a href="{{ route('article.create') }}"
+    <a href="{{ route('articles.create') }}"
        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
         Создать статью
     </a>

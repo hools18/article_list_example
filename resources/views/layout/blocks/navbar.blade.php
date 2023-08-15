@@ -14,7 +14,7 @@
                             'bg-gray-900' => Route::is('main.index'),
                             "text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
                         ])>Главная</a>
-                        <a href="{{ route('article.index') }}" @class([
+                        <a href="{{ route('articles.index') }}" @class([
                             'bg-gray-900' => Route::is('article.index'),
                             "text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
                         ])>Статьи</a>
@@ -47,7 +47,7 @@
             <a href="{{ route('main.index') }}"
                class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
                aria-current="page">Главная</a>
-            <a href="{{ route('article.index') }}"
+            <a href="{{ route('articles.index') }}"
                class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Статьи</a>
         </div>
 

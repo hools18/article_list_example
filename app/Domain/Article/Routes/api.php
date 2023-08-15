@@ -1,6 +1,6 @@
 <?php
 
-use App\Domain\Article\Http\Controllers\ArticleController;
+use App\Domain\Article\Api\Controllers\ArticleController;
 
 Route::group(['prefix' => 'articles', 'as' => 'articles.'], function () {
     Route::get('', [ArticleController::class, 'index'])

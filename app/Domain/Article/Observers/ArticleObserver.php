@@ -8,7 +8,6 @@ class ArticleObserver
 {
     public function created(Article $article): void
     {
-
     }
 
     public function updated(Article $article): void
