@@ -2,7 +2,7 @@
 
 namespace App\Domain\Article\Observers;
 
-use App\Domain\Article\Model\Article;
+use App\Domain\Article\Models\Article;
 
 class ArticleObserver
 {
