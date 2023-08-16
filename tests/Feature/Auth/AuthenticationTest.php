@@ -2,7 +2,8 @@
 
 namespace Tests\Feature\Auth;
 
-use App\Models\User\User;
+use App\Domain\User\Enums\RoleEnum;
+use App\Domain\User\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -11,6 +12,15 @@ class AuthenticationTest extends TestCase
 {
     use RefreshDatabase;
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        User::initRoles();
+
+        $this->withoutVite();
+    }
+
     public function test_login_screen_can_be_rendered(): void
     {
         $response = $this->get('/login');
@@ -18,9 +28,10 @@ class AuthenticationTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function test_users_can_authenticate_using_the_login_screen(): void
+    public function testAuthorAuthenticate(): void
     {
         $user = User::factory()->create();
+        $user->assignRole(RoleEnum::AUTHOR->value);
 
         $response = $this->post('/login', [
             'email' => $user->email,
@@ -28,7 +39,31 @@ class AuthenticationTest extends TestCase
         ]);
 
         $this->assertAuthenticated();
-        $response->assertRedirect(RouteServiceProvider::HOME);
+
+        $response
+            ->assertStatus(200)
+            ->assertJson([
+                'message' => 'Вы успешно вошли'
+            ]);
+    }
+
+    public function testReaderAuthenticate(): void
+    {
+        $user = User::factory()->create();
+        $user->assignRole(RoleEnum::READER->value);
+
+        $response = $this->post('/login', [
+            'email' => $user->email,
+            'password' => 'password',
+        ]);
+
+        $this->assertAuthenticated();
+
+        $response
+            ->assertStatus(200)
+            ->assertJson([
+                'message' => 'Вы успешно вошли'
+            ]);
     }
 
     public function test_users_can_not_authenticate_with_invalid_password(): void

@@ -1,23 +1,22 @@
-import './bootstrap';
 import '../css/app.css';
+import './bootstrap';
+import './function';
+import toastr from "toastr";
 
-import { createApp, h } from 'vue';
-import { createInertiaApp } from '@inertiajs/vue3';
-import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
-import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
+window.toastr = toastr;
 
-const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
+import {createApp} from "vue/dist/vue.esm-bundler.js";
+import Login from "./components/auth/LoginComponent.vue";
+import Register from "./components/auth/RegisterComponent.vue";
+import MainPage from "./components/main-page/MainPageComponent.vue";
+import ArticlePage from "./components/articles/IndexComponent.vue";
 
-createInertiaApp({
-    title: (title) => `${title} - ${appName}`,
-    resolve: (name) => resolvePageComponent(`./Pages/${name}.vue`, import.meta.glob('./Pages/**/*.vue')),
-    setup({ el, App, props, plugin }) {
-        return createApp({ render: () => h(App, props) })
-            .use(plugin)
-            .use(ZiggyVue, Ziggy)
-            .mount(el);
-    },
-    progress: {
-        color: '#4B5563',
-    },
-});
+const app = createApp({})
+
+
+app.component("login", Login)
+    .component("register", Register)
+    .component("article-page", ArticlePage)
+    .component("main-page", MainPage);
+
+app.mount("#app");
