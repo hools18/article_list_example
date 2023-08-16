@@ -21,7 +21,7 @@ class RegistrationTest extends TestCase
         $this->withoutVite();
     }
 
-    public function test_registration_screen_can_be_rendered(): void
+    public function testRegistrationPage(): void
     {
         $response = $this->get('/register');
 

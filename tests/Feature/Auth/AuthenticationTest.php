@@ -21,7 +21,7 @@ class AuthenticationTest extends TestCase
         $this->withoutVite();
     }
 
-    public function test_login_screen_can_be_rendered(): void
+    public function testAuthenticatePage(): void
     {
         $response = $this->get('/login');
 
@@ -66,7 +66,7 @@ class AuthenticationTest extends TestCase
             ]);
     }
 
-    public function test_users_can_not_authenticate_with_invalid_password(): void
+    public function testFailAuthenticate(): void
     {
         $user = User::factory()->create();
 
