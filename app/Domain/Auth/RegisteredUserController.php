@@ -42,7 +42,11 @@ class RegisteredUserController extends Controller
                     'password' => Hash::make($request->validated('password')),
                 ]);
 
-                $user->assignRole(RoleEnum::from($request->validated('role'))->value);
+                if ($roleName = RoleEnum::tryFrom($request->validated('role'))) {
+                    $user->assignRole($roleName->value);
+                } else {
+                    DB::rollback();
+                }
 
                 Auth::login($user);
             });
