@@ -5,10 +5,6 @@ on:
 jobs:
   laravel-tests:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [ 18.x ]
-
     env:
       BROADCAST_DRIVER: log
       CACHE_DRIVER: redis
@@ -36,7 +32,7 @@ jobs:
           - 6379/tcp
         options: --health-cmd="redis-cli ping" --health-interval=10s --health-timeout=5s --health-retries=3
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
