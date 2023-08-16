@@ -63,11 +63,6 @@ jobs:
           php artisan key:generate
           php artisan config:clear
           php artisan route:clear
-            - name: Install Project
-              run: php artisan install
-              env:
-                DB_PORT: ${{ job.services.postgres.ports[5432] }}
-                REDIS_PORT: ${{ job.services.redis.ports['6379'] }}
       - name: Run tests
         run: vendor/bin/phpunit --no-coverage
         env:
