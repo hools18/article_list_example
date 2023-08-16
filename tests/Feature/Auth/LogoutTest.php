@@ -11,6 +11,13 @@ class LogoutTest extends TestCase
 {
     use RefreshDatabase;
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->withoutVite();
+    }
+
     public function testLogout(): void
     {
         $user = User::factory()->create();

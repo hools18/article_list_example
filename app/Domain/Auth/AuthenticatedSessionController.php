@@ -3,7 +3,6 @@
 namespace App\Domain\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
@@ -30,7 +29,7 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         return response()->json([
-            'message' => 'Вы успешно зарегистрированы'
+            'message' => 'Вы успешно вошли'
         ]);
     }
 
