@@ -2,12 +2,12 @@ name: Deploy
 on:
   push:
     branches:
-      - main
+      - production
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Deploy to developer server
         uses: appleboy/ssh-action@master
         with:
@@ -15,5 +15,5 @@ jobs:
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSHKEY }}
-          script: "cd /home/admin/webserver/web/acsmeta.ru/public_html && ./.scripts/deploy_prod.sh"
+          script: "cd /var/html/www && ./.scripts/deploy.sh"
 
