@@ -5,6 +5,8 @@ use App\Domain\Auth\RegisteredUserController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
+    Route::get('get_roles', [RegisteredUserController::class, 'getRoles'])
+        ->name('get_roles');
     Route::get('register', [RegisteredUserController::class, 'create'])
         ->name('register');
 

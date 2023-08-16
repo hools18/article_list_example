@@ -29,6 +29,15 @@ class UserSeeder extends Seeder
 
         $reader->assignRole(RoleEnum::READER->value);
 
+        $admin = User::create([
+            'name' => 'Администратор',
+            'last_name' => 'Фамилия',
+            'email' => 'admin@email.test',
+            'password' => Hash::make('12345678'),
+        ]);
+
+        $admin->assignRole(RoleEnum::ADMIN->value);
+
         foreach (RoleEnum::cases() as $role) {
             $user = User::factory()->create();
             $user->assignRole($role->value);

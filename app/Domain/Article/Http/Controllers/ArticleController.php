@@ -24,24 +24,37 @@ class ArticleController
 
     public function store(ArticleRequest $request): ArticleResource
     {
-        return new ArticleResource(Article::create($request->validated()));
+
+        return new ArticleResource(Article::create([
+            'name' => $request->validated('name'),
+            'description' => $request->validated('description'),
+            'text' => $request->validated('text'),
+            'category_id' => $request->validated('category_id'),
+            'type' => $request->validated('type'),
+        ]));
     }
 
-    public function show(Article $category): ArticleResource
+    public function show(Article $article): View
     {
-        return new ArticleResource($category);
+        return view('article.show', ['article' =>  new ArticleResource($article)]);
     }
 
-    public function update(ArticleRequest $request, Article $category): ArticleResource
+    public function update(ArticleRequest $request, Article $article): ArticleResource
     {
-        $category->update($request->validated());
+        $article->update([
+            'name' => $request->validated('name'),
+            'description' => $request->validated('description'),
+            'text' => $request->validated('text'),
+            'category_id' => $request->validated('category_id'),
+            'type' => $request->validated('type'),
+        ]);
 
-        return new ArticleResource($category);
+        return new ArticleResource($article);
     }
 
-    public function destroy(Article $category): JsonResponse
+    public function destroy(Article $article): JsonResponse
     {
-        $category->delete();
+        $article->delete();
 
         return response()->json();
     }
