@@ -18,7 +18,8 @@ class ArticleResource extends JsonResource
             'category_id' => $this->category_id,
             'user_id' => $this->user_id,
             'is_active' => $this->is_active,
-            'type' => $this->type
+            'type' => $this->type,
+            'url' => route('articles.show', $this->id),
         ];
     }
 }

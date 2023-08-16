@@ -28,7 +28,6 @@ class ArticleRequest extends FormRequest
                 'integer',
                 'exists:categories,id'
             ],
-            'is_active' => ['boolean'],
             'type' => [new Enum(TypeEnum::class)],
         ];
     }

@@ -7,6 +7,7 @@ use App\Domain\User\Enums\RoleEnum;
 use App\Domain\User\Models\User;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
@@ -18,9 +19,16 @@ class RegisteredUserController extends Controller
     /**
      * Display the registration view.
      */
-    public function create()
+    public function create(): View
     {
         return view('auth.register');
+    }
+
+    public function getRoles(): array
+    {
+        return [
+            'roles' => RoleEnum::publicRoles()
+        ];
     }
 
     public function store(RegisterRequest $request): JsonResponse
@@ -34,7 +42,7 @@ class RegisteredUserController extends Controller
                     'password' => Hash::make($request->validated('password')),
                 ]);
 
-                $user->assignRole(RoleEnum::tryFrom($request->validated('role'))->value);
+                $user->assignRole(RoleEnum::from($request->validated('role'))->value);
 
                 Auth::login($user);
             });
@@ -44,7 +52,7 @@ class RegisteredUserController extends Controller
             ]);
         }
 
-        return redirect()->json([
+        return response()->json([
             'message' => 'Вы успешно зарегистрированы'
         ]);
     }

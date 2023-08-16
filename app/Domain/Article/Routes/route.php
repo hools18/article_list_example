@@ -10,6 +10,6 @@ Route::group(['prefix' => 'articles', 'as' => 'articles.'], function () {
         ->get('/create', [ArticleController::class, 'create'])
         ->name('create');
 
-    Route::get('/{article_slug}', [ArticleController::class, 'show'])
+    Route::get('/{article}', [ArticleController::class, 'show'])
         ->name('show');
 });

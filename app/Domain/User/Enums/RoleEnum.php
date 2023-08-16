@@ -20,8 +20,8 @@ enum RoleEnum: string
     public static function publicRoles(): array
     {
         return [
-            self::AUTHOR,
-            self::READER,
+            self::AUTHOR->value => 'Автор',
+            self::READER->value => 'Читатель',
         ];
     }
 }

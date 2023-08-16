@@ -23,9 +23,11 @@ class Kernel extends ConsoleKernel
     {
         $this->load(__DIR__.'/Commands');
 
-        foreach (array_diff(scandir(base_path('app/Domain')), ['..', '.']) as $folderName) {
-            if (is_dir(base_path("app/Domain/{$folderName}/Console/Commands"))) {
-                $this->load("app/Domain/{$folderName}/Console/Commands");
+        if(scandir(base_path('app/Domain'))){
+            foreach (array_diff(scandir(base_path('app/Domain')), ['..', '.']) as $folderName) {
+                if (is_dir(base_path("app/Domain/{$folderName}/Console/Commands"))) {
+                    $this->load("app/Domain/{$folderName}/Console/Commands");
+                }
             }
         }
 
