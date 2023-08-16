@@ -17,6 +17,8 @@ class RegistrationTest extends TestCase
         parent::setUp();
 
         User::initRoles();
+
+        $this->withoutVite();
     }
 
     public function test_registration_screen_can_be_rendered(): void
@@ -38,7 +40,11 @@ class RegistrationTest extends TestCase
         ]);
 
         $this->assertAuthenticated();
-        $response->assertRedirect(RouteServiceProvider::HOME);
+        $response
+            ->assertStatus(200)
+            ->assertJson([
+                "message" => "Вы успешно зарегистрированы"
+            ]);
     }
 
     public function testReaderRegister(): void
@@ -53,6 +59,11 @@ class RegistrationTest extends TestCase
         ]);
 
         $this->assertAuthenticated();
-        $response->assertRedirect(RouteServiceProvider::HOME);
+
+        $response
+            ->assertStatus(200)
+            ->assertJson([
+                "message" => "Вы успешно зарегистрированы"
+            ]);
     }
 }

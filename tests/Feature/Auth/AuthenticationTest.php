@@ -17,6 +17,8 @@ class AuthenticationTest extends TestCase
         parent::setUp();
 
         User::initRoles();
+
+        $this->withoutVite();
     }
 
     public function test_login_screen_can_be_rendered(): void
@@ -37,7 +39,12 @@ class AuthenticationTest extends TestCase
         ]);
 
         $this->assertAuthenticated();
-        $response->assertRedirect(RouteServiceProvider::HOME);
+
+        $response
+            ->assertStatus(200)
+            ->assertJson([
+                'message' => 'Вы успешно вошли'
+            ]);
     }
 
     public function testReaderAuthenticate(): void
@@ -51,7 +58,12 @@ class AuthenticationTest extends TestCase
         ]);
 
         $this->assertAuthenticated();
-        $response->assertRedirect(RouteServiceProvider::HOME);
+
+        $response
+            ->assertStatus(200)
+            ->assertJson([
+                'message' => 'Вы успешно вошли'
+            ]);
     }
 
     public function test_users_can_not_authenticate_with_invalid_password(): void
