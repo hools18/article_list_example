@@ -7,7 +7,7 @@ use Spatie\Permission\Models\Role;
 
 trait RoleTrait
 {
-    public static function assignRoles(): void
+    public static function initRoles(): void
     {
         foreach (RoleEnum::cases() as $role) {
             Role::findOrCreate($role->value);

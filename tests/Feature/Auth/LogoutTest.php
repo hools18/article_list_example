@@ -1,6 +1,6 @@
 <?php
 
-namespace Auth;
+namespace Tests\Feature\Auth;
 
 use App\Domain\User\Models\User;
 use App\Providers\RouteServiceProvider;

@@ -16,7 +16,7 @@ class AuthenticationTest extends TestCase
     {
         parent::setUp();
 
-        User::assignRoles();
+        User::initRoles();
     }
 
     public function test_login_screen_can_be_rendered(): void

@@ -2,6 +2,7 @@
 
 namespace App\Domain\Category\Models;
 
+use App\Domain\Category\Models\Traits\CategoryBaseTrait;
 use Database\Factories\Category\CategoryFactory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -12,6 +13,7 @@ class Category extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    use CategoryBaseTrait;
 
     protected $fillable = [
         'name',

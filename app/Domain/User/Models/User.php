@@ -2,8 +2,7 @@
 
 namespace App\Domain\User\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Domain\User\Models\Traits\BaseTrait;
+use App\Domain\User\Models\Traits\UserBaseTrait;
 use Database\Factories\User\UserFactory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -18,7 +17,7 @@ class User extends Authenticatable
     use HasFactory;
     use Notifiable;
     use HasRoles;
-    use BaseTrait;
+    use UserBaseTrait;
 
     protected $fillable = [
         'name',

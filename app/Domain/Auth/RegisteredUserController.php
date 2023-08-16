@@ -7,6 +7,7 @@ use App\Domain\User\Enums\RoleEnum;
 use App\Domain\User\Models\User;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -22,7 +23,7 @@ class RegisteredUserController extends Controller
         return view('auth.register');
     }
 
-    public function store(RegisterRequest $request): RedirectResponse
+    public function store(RegisterRequest $request): JsonResponse
     {
         try {
             DB::transaction(function () use ($request) {
@@ -38,9 +39,13 @@ class RegisteredUserController extends Controller
                 Auth::login($user);
             });
         } catch (\Throwable $a) {
-            return redirect()->route('register');
+            return response()->json([
+                'message' => 'Ошибка регистрации'
+            ]);
         }
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect()->json([
+            'message' => 'Вы успешно зарегистрированы'
+        ]);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\Route;
 
 class Kernel extends ConsoleKernel
 {
@@ -21,6 +22,12 @@ class Kernel extends ConsoleKernel
     protected function commands(): void
     {
         $this->load(__DIR__.'/Commands');
+
+        foreach (array_diff(scandir(base_path('app/Domain')), ['..', '.']) as $folderName) {
+            if (is_dir(base_path("app/Domain/{$folderName}/Console/Commands"))) {
+                $this->load("app/Domain/{$folderName}/Console/Commands");
+            }
+        }
 
         require base_path('routes/console.php');
     }
