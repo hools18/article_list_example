@@ -1,20 +1,20 @@
-window.showAlert = function (messages, status = 'success') {
+window.showAlert = function (errors, status = 'success') {
 
     let statuses = ['success', 'info', 'warning', 'error'];
 
-    if (Object.prototype.toString.call(messages) === "[object Object]") {
+    if (Object.prototype.toString.call(errors) === "[object Object]") {
         let err_text = '';
 
-        for(let message in messages){
-            err_text += ' - ' + messages[message] + '<br>';
+        for (let error in errors) {
+            err_text += ' * ' + errors[error] + '<br>';
         }
 
-        messages = err_text;
+        errors = err_text;
     }
 
     if (statuses.includes(status)) {
-        eval('toastr.' + status)(messages);
+        eval('toastr.' + status)(errors);
     } else {
-        toastr.success(messages);
+        toastr.success(errors);
     }
 };

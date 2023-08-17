@@ -7,6 +7,7 @@ use App\Domain\Article\Requests\ArticleIndexRequest;
 use App\Domain\Article\Requests\ArticleRequest;
 use App\Domain\Article\Resources\ArticleCollection;
 use App\Domain\Article\Resources\ArticleResource;
+use App\Service\Article\ArticleService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -18,15 +19,9 @@ class ArticleController
         return new ArticleCollection(Article::active()->paginate(12));
     }
 
-    public function store(ArticleRequest $request): ArticleResource
+    public function store(ArticleRequest $request, ArticleService $articleService): ArticleResource
     {
-        return new ArticleResource(Article::create([
-            'name' => $request->validated('name'),
-            'description' => $request->validated('description'),
-            'text' => $request->validated('text'),
-            'category_id' => $request->validated('category_id'),
-            'type' => $request->validated('type'),
-        ]));
+        return new ArticleResource($articleService->create($request));
     }
 
     public function update(ArticleRequest $request, Article $category): ArticleResource
