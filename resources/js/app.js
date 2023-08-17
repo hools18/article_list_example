@@ -1,7 +1,5 @@
-import '../css/app.css';
 import './bootstrap';
-import './function';
-import toastr from "toastr";
+import '../css/app.css';
 
 window.toastr = toastr;
 
