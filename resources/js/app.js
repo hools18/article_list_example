@@ -1,7 +1,4 @@
 import './bootstrap';
-import '../css/app.css';
-
-window.toastr = toastr;
 
 import {createApp} from "vue/dist/vue.esm-bundler.js";
 import Login from "./components/auth/LoginComponent.vue";
