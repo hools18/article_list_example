@@ -73,7 +73,7 @@ services:
       - '8123:8123'
       - '9000:9000'
     volumes:
-      - ./db:/var/lib/clickhouse
+      - 'sail-clickhouse:/var/lib/clickhouse'
     ulimits:
       nofile: 262144
     networks:
@@ -85,4 +85,6 @@ volumes:
   sail-pgsql:
     driver: local
   sail-redis:
+    driver: local
+  sail-clickhouse:
     driver: local
