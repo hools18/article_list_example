@@ -3,18 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Facades\DB;
 
 class MainController
 {
     public function index(): View
     {
-        //        $r = LogVisit::select(['id', 'userId', 'visitDate', 'pageURL', 'pageType'])
+//        User::factory()->create();
+//        $r = LogVisit::select(['id', 'userId', 'visitDate', 'pageURL', 'pageType'])
 //            ->where('id', '=', 1)
 //            ->getRows();
 //
 //        dd($r);
 //        $db = DB::connection('clickhouse')->getClient();
+//
 //        $statement = $db->insert(
 //            'log_visits',
 //            [

@@ -78,6 +78,17 @@ services:
       nofile: 262144
     networks:
       - sail
+  clickhouse_test:
+    image: 'clickhouse/clickhouse-server'
+    container_name: clickhouse_test
+    ports:
+      - '8124:8123'
+    volumes:
+      - 'sail-clickhouse:/var/lib/clickhouse_test'
+    ulimits:
+      nofile: 262144
+    networks:
+      - sail
 networks:
   sail:
     driver: bridge

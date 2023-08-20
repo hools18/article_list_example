@@ -4,7 +4,7 @@ return new class extends \PhpClickHouseLaravel\Migration {
     public function up(): void
     {
         static::write(
-            'CREATE TABLE default.log_visits (
+            'CREATE TABLE IF NOT EXISTS log_visits (
                 id UInt32,
                 userId UInt32,
                 visitDate DateTime,
@@ -18,6 +18,6 @@ return new class extends \PhpClickHouseLaravel\Migration {
 
     public function down(): void
     {
-        static::write('DROP TABLE default.log_visits');
+        static::write('DROP TABLE log_visits');
     }
 };

@@ -15,6 +15,8 @@ class LogoutTest extends TestCase
     {
         parent::setUp();
 
+        User::initRoles();
+
         $this->withoutVite();
     }
 

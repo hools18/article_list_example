@@ -4,7 +4,6 @@ namespace Tests\Feature\Auth;
 
 use App\Domain\User\Enums\RoleEnum;
 use App\Domain\User\Models\User;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 

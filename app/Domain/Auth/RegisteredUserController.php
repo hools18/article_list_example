@@ -6,29 +6,18 @@ use App\Domain\Auth\Requests\RegisterRequest;
 use App\Domain\User\Enums\RoleEnum;
 use App\Domain\User\Models\User;
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Throwable;
 
 class RegisteredUserController extends Controller
 {
-    /**
-     * Display the registration view.
-     */
     public function create(): View
     {
         return view('auth.register');
-    }
-
-    public function getRoles(): array
-    {
-        return [
-            'roles' => RoleEnum::publicRoles()
-        ];
     }
 
     public function store(RegisterRequest $request): JsonResponse
@@ -50,7 +39,7 @@ class RegisteredUserController extends Controller
 
                 Auth::login($user);
             });
-        } catch (\Throwable $a) {
+        } catch (Throwable) {
             return response()->json([
                 'message' => 'Ошибка регистрации'
             ]);
