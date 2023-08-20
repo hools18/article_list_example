@@ -8,6 +8,14 @@ class MainController
 {
     public function index(): View
     {
+        //MONGO
+//        $a = DB::connection('mongodb');
+//        $a->collection('test_mongo')->insert(['name' => 'John Doe', 'seed' => true]);
+//        $a->collection('test_mongo')->delete();
+//        dd($a);
+
+
+        //CLICKHOUSE
 //        User::factory()->create();
 //        $r = LogVisit::select(['id', 'userId', 'visitDate', 'pageURL', 'pageType'])
 //            ->where('id', '=', 1)

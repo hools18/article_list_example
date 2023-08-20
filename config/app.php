@@ -169,6 +169,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         \PhpClickHouseLaravel\ClickhouseServiceProvider::class,
+        Jenssegers\Mongodb\MongodbServiceProvider::class,
     ])->toArray(),
 
     /*

@@ -89,6 +89,16 @@ services:
       nofile: 262144
     networks:
       - sail
+  mongo:
+    image: mongo
+    container_name: mongo_articles
+    ports:
+      - '27017:27017'
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    networks:
+      - sail
 networks:
   sail:
     driver: bridge
