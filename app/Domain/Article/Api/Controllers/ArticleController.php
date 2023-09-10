@@ -3,11 +3,10 @@
 namespace App\Domain\Article\Api\Controllers;
 
 use App\Domain\Article\Models\Article;
-use App\Domain\Article\Requests\ArticleIndexRequest;
 use App\Domain\Article\Requests\ArticleRequest;
 use App\Domain\Article\Resources\ArticleCollection;
 use App\Domain\Article\Resources\ArticleResource;
-use App\Service\Article\ArticleService;
+use App\Services\Article\ArticleService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -46,6 +45,6 @@ class ArticleController
 
     public function getArticlesInBlock(): JsonResource
     {
-        return  ArticleResource::collection(Article::active()->take(3)->get());
+        return ArticleResource::collection(Article::active()->take(3)->get());
     }
 }

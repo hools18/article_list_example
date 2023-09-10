@@ -5,7 +5,8 @@ namespace App\Domain\Article\Http\Controllers;
 use App\Domain\Article\Models\Article;
 use App\Domain\Article\Requests\ArticleRequest;
 use App\Domain\Article\Resources\ArticleResource;
-use App\Service\Article\ArticleService;
+use App\Services\Article\ArticleService;
+use App\Services\Messenger\Telegram\TelegramMessage;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 
@@ -28,9 +29,9 @@ class ArticleController
         return new ArticleResource($articleService->create($request));
     }
 
-    public function show(Article $article): View
+    public function show(Article $article, TelegramMessage $telegramMessage): View
     {
-        return view('article.show', ['article' =>  new ArticleResource($article)]);
+        return view('article.show', ['article' => new ArticleResource($article)]);
     }
 
     public function update(ArticleRequest $request, Article $article, ArticleService $articleService): ArticleResource
